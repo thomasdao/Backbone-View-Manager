@@ -39,3 +39,6 @@ productView = VM.reuseView("productView", function() {
 $(this.el).append(productView.render().el);
 ```
 The different between VM.reuseView and VM.createView is that, reuseView will look for existing view with name "productView", if found it will return to you. Else, it will execute the callback function and cache result. VM.createView will always execute the callback function and cleanup existing view for you. Hence you may like to use VM.createView if the views is dynamic and frequently change
+
+# About
+I got inspired by implementation from https://github.com/thomasdavis/backboneboilerplate. You might like to check it out :)
