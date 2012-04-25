@@ -17,7 +17,7 @@ ProductView = Backbone.View.extend({...});
 productView = new ProductView({...});
 $(this.el).append(productView.render().el);
 ```
-This code, although simple, will create zombie view, because we constantly create new view without remove previous view.
+This code, although simple, will create zombie view, because we constantly create new view without remove previous view. If you are not familiar with zombie view, you might refer to an excellent explanation here: http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/
 
 Using View Manager, you can now do like this:
 ```javascript
