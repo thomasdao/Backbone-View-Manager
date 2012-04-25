@@ -2,10 +2,12 @@ In Backbone application, we often need to take care of cleanup the zombie views.
 
 # Setup
 Just include path to vm.js after jQuery, underscore and Backbone, and you are ready to go.
+```javascript
 <script src="path/to/jquery"></script>
 <script src="path/to/underscore"></script>
 <script src="path/to/backbone"></script>
 <script src="path/to/vm.js"></script>
+```
 
 # How to use
 
