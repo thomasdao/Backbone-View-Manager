@@ -1,4 +1,4 @@
-In Backbone application, we often need to take care of cleanup the zombie views. In some other use case, we might want to reuse existing view because it rarely changes. This simple View Manager will take care of these too use cases minimal change your existing code.
+In Backbone application, we often need to take care of cleanup the zombie views. In some other use case, we might want to reuse existing view because it rarely changes. This simple View Manager will take care of the two use cases minimal change your existing code.
 
 # Setup
 Just include path to vm.js after jQuery, underscore and Backbone, and you are ready to go.
