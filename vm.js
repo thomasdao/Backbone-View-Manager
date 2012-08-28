@@ -4,10 +4,8 @@ window.VM = window.VM || {};
 // VM.views hold all references to existing views
 VM.views = VM.views || {};
 
-// VM.createView always cleans up existing view before
-// creating a new one.
-// callback function always return a new view instance
-VM.createView = function(name, callback) {
+// Close view
+VM.closeView = function(name) {
 	if (typeof VM.views[name] !== 'undefined') {
 		// Cleanup view
 		// Remove all of the view's delegated events
@@ -21,9 +19,16 @@ VM.createView = function(name, callback) {
 			VM.views[name].close();
 		}
 	}
+};
+
+// VM.createView always cleans up existing view before
+// creating a new one.
+// callback function always return a new view instance
+VM.createView = function(name, callback) {
+    VM.closeView(name);
 	VM.views[name] = callback();
 	return VM.views[name];
-}
+};
 
 // VM.reuseView always returns existing view. Otherwise it
 // execute callback function to return new view
@@ -35,4 +40,4 @@ VM.reuseView = function(name, callback) {
 	
 	VM.views[name] = callback();
 	return VM.views[name];
-}
+};
