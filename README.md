@@ -19,7 +19,9 @@ $(this.el).append(productView.render().el);
 ```
 This code, although simple, will create zombie view, because we constantly create new view without remove previous view. If you are not familiar with zombie view, you might refer to an excellent explanation here: http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/
 
-Using View Manager, you can now do like this:
+However it's not convenient to call view.dispose() for all Backbone Views, especially if we create views in for loop.
+
+I think the best timing to put cleanup code is before creating new view. My solution is to create a View Manager helper to do this cleanup:
 ```javascript
 ProductView = Backbone.View.extend({…});
 productView = VM.createView("productView", function() {
@@ -39,6 +41,11 @@ productView = VM.reuseView("productView", function() {
 $(this.el).append(productView.render().el);
 ```
 The different between VM.reuseView and VM.createView is that, reuseView will look for existing view with name "productView", if found it will return to you. Else, it will execute the callback function and cache result. VM.createView will always execute the callback function and cleanup existing view for you. Hence you may like to use VM.createView if the views is dynamic and frequently change
+
+Sometime we just need to close existing view, there is a simple function for it:
+```javascript
+VM.closeView("productView");
+```
 
 # About
 I got inspired by implementation from https://github.com/thomasdavis/backboneboilerplate. You might like to check it out :)
